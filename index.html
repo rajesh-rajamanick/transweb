@@ -3,1146 +3,584 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power Lead Enterprises | Power & Distribution Transformers up to 16 MVA</title>
+    <title>Power Lead Enterprises | Power & Distribution Transformers (Up to 20 MVA)</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Inter & Rajdhani for Industrial Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        navy: {
-                            800: '#0b192c',
-                            900: '#070f1e',
-                            950: '#030712'
-                        },
-                        amber: {
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                            600: '#d97706'
-                        },
                         industrial: {
-                            50: '#f8fafc',
-                            100: '#f1f5f9',
-                            700: '#334155',
-                            800: '#1e293b',
-                            900: '#0f172a'
+                            dark: '#070f1e',
+                            navy: '#0b162c',
+                            card: '#112240',
+                            border: '#1e3a8a',
+                            accent: '#f59e0b',
+                            accentHover: '#d97706',
+                            muted: '#94a3b8'
                         }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Rajdhani', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-    <style>
-        .gradient-overlay {
-            background: linear-gradient(135deg, rgba(7, 15, 30, 0.95) 0%, rgba(15, 23, 42, 0.85) 100%);
-        }
-        .tech-grid-bg {
-            background-image: radial-gradient(#334155 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-    </style>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-amber-500 selection:text-white">
+<body class="bg-industrial-dark text-slate-100 font-sans antialiased selection:bg-industrial-accent selection:text-black">
 
-    <!-- TOP ANNOUNCEMENT / COMPLIANCE BAR -->
-    <div class="bg-navy-950 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
-            <div class="flex items-center gap-4 flex-wrap justify-center">
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-certificate text-amber-500">=" text-amber-500"></i> Compliant with IS 2026 / IS 1180 / IEC 60076</span>
-                <span class="hidden sm:inline text-slate-600">|</span>
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-emerald-400"></i> Um 36 kV Class Insulation Level</span>
+    <!-- Top Navigation -->
+    <header class="sticky top-0 z-50 bg-industrial-dark/90 backdrop-blur-md border-b border-industrial-border/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-industrial-accent to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20">
+                    <i class="fa-solid fa-bolt text-industrial-dark text-xl font-bold"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-black tracking-wider uppercase text-white">POWER LEAD</span>
+                    <span class="block text-[10px] tracking-widest text-industrial-accent font-semibold">ENTERPRISES</span>
+                </div>
             </div>
-            <div class="flex items-center gap-6">
-                <a href="tel:+919486914343" class="hover:text-amber-400 transition-colors"><i class="fa-solid fa-phone text-amber-500 mr-1.5"></i> +91 94869 14343</a>
-                <a href="mailto:team.powerlead@gmail.com" class="hover:text-amber-400 transition-colors"><i class="fa-solid fa-envelope text-amber-500 mr-1.5"></i> team.powerlead@gmail.com</a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#overview" class="hover:text-industrial-accent transition-colors">Overview</a>
+                <a href="#products" class="hover:text-industrial-accent transition-colors">Products</a>
+                <a href="#specs" class="hover:text-industrial-accent transition-colors">Specifications</a>
+                <a href="#facility" class="hover:text-industrial-accent transition-colors">Manufacturing Works</a>
+                <a href="#contact" class="hover:text-industrial-accent transition-colors">Contact</a>
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <button onclick="openCatalogModal()" class="px-4 py-2 text-xs font-semibold uppercase tracking-wider border border-industrial-border rounded-md hover:bg-industrial-card transition">
+                    <i class="fa-solid fa-file-pdf mr-2 text-industrial-accent"></i> Catalogue
+                </button>
+                <button onclick="openRfqModal()" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider bg-industrial-accent text-industrial-dark rounded-md hover:bg-industrial-accentHover shadow-lg shadow-amber-500/20 transition">
+                    Get a Quote
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-industrial-navy border-b border-industrial-border px-4 pt-2 pb-6 space-y-4">
+            <a href="#overview" class="block py-2 text-slate-300 hover:text-industrial-accent">Overview</a>
+            <a href="#products" class="block py-2 text-slate-300 hover:text-industrial-accent">Products</a>
+            <a href="#specs" class="block py-2 text-slate-300 hover:text-industrial-accent">Specifications</a>
+            <a href="#facility" class="block py-2 text-slate-300 hover:text-industrial-accent">Manufacturing Works</a>
+            <a href="#contact" class="block py-2 text-slate-300 hover:text-industrial-accent">Contact</a>
+            <div class="pt-4 flex flex-col space-y-3">
+                <button onclick="openCatalogModal()" class="w-full py-2.5 text-xs font-semibold uppercase tracking-wider border border-industrial-border rounded-md">Download Catalogue PDF</button>
+                <button onclick="openRfqModal()" class="w-full py-2.5 text-xs font-bold uppercase tracking-wider bg-industrial-accent text-industrial-dark rounded-md">Get a Quote</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="overview" class="relative overflow-hidden py-20 lg:py-28 bg-gradient-to-b from-industrial-navy to-industrial-dark border-b border-industrial-border/30">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-industrial-accent text-xs font-semibold tracking-wide uppercase">
+                        <i class="fa-solid fa-certificate"></i> <span>BIS Licence No. CM/L-6700128010 (IS 1180)</span>[cite: 5]
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-none">
+                        Power & Distribution <span class="text-transparent bg-clip-text bg-gradient-to-r from-industrial-accent to-amber-200">Transformers</span>
+                    </h1>
+                    <p class="text-lg text-industrial-muted max-w-2xl leading-relaxed">
+                        Up to 20 MVA 33 kV Class. Mineral & Natural Ester insulated ONAN/ONAF cooling transformers engineered for utilities, solar & wind evacuation, industry, and railways[cite: 5].
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <button onclick="openRfqModal()" class="px-8 py-4 bg-industrial-accent text-industrial-dark font-bold text-sm tracking-wider uppercase rounded-md hover:bg-industrial-accentHover shadow-xl shadow-amber-500/20 transition flex items-center space-x-3">
+                            <span>Request Custom Quotation</span> <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button onclick="openCatalogModal()" class="px-8 py-4 bg-industrial-card border border-industrial-border text-white font-semibold text-sm tracking-wider uppercase rounded-md hover:bg-industrial-navy transition flex items-center space-x-3">
+                            <i class="fa-solid fa-file-pdf text-industrial-accent"></i> <span>View Catalogue Spec Sheet</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="relative rounded-2xl p-2 bg-gradient-to-b from-industrial-border to-industrial-card shadow-2xl">
+                        <div class="bg-industrial-navy rounded-xl p-6 space-y-6">
+                            <div class="flex justify-between items-center border-b border-industrial-border pb-4">
+                                <span class="text-xs uppercase tracking-widest text-industrial-accent font-bold">Key Specifications</span>
+                                <span class="text-xs text-industrial-muted">IS 2026 / IS 1180</span>[cite: 5]
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-industrial-card p-4 rounded-lg border border-industrial-border/50">
+                                    <div class="text-2xl font-black text-white">20 MVA</div>
+                                    <div class="text-xs text-industrial-muted mt-1">Max Rating (3-Phase)</div>[cite: 5]
+                                </div>
+                                <div class="bg-industrial-card p-4 rounded-lg border border-industrial-border/50">
+                                    <div class="text-2xl font-black text-industrial-accent">99.7%+</div>
+                                    <div class="text-xs text-industrial-muted mt-1">Efficiency at Rated Load</div>[cite: 5]
+                                </div>
+                                <div class="bg-industrial-card p-4 rounded-lg border border-industrial-border/50">
+                                    <div class="text-2xl font-black text-white">33 kV</div>
+                                    <div class="text-xs text-industrial-muted mt-1">HV Class (Um 36 kV)</div>[cite: 5]
+                                </div>
+                                <div class="bg-industrial-card p-4 rounded-lg border border-industrial-border/50">
+                                    <div class="text-2xl font-black text-industrial-accent">500 MVA</div>
+                                    <div class="text-xs text-industrial-muted mt-1">Annual Works Capacity</div>[cite: 5, 8]
+                                </div>
+                            </div>
+                            <button onclick="openCertModal()" class="w-full py-3 bg-industrial-card border border-industrial-border rounded-lg text-xs font-bold uppercase tracking-wider text-industrial-accent hover:bg-industrial-border/40 transition flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-qrcode"></i> <span>Explore QR Digital Certificate Standard</span>[cite: 7]
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Standards & Compliance Strip -->
+    <div class="bg-industrial-navy border-b border-industrial-border/50 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-around gap-6 opacity-80 text-xs sm:text-sm font-semibold tracking-wider text-industrial-muted">
+                <div class="flex items-center space-x-2"><i class="fa-solid fa-check-circle text-industrial-accent"></i><span>BIS LICENCE CM/L-6700128010</span>[cite: 5]</div>
+                <div class="flex items-center space-x-2"><i class="fa-solid fa-check-circle text-industrial-accent"></i><span>IS 1180: PART 1: 2014</span>[cite: 5]</div>
+                <div class="flex items-center space-x-2"><i class="fa-solid fa-check-circle text-industrial-accent"></i><span>IEC 60076 SERIES</span>[cite: 5]</div>
+                <div class="flex items-center space-x-2"><i class="fa-solid fa-check-circle text-industrial-accent"></i><span>NABL TEST BAY ACCREDITED</span>[cite: 8]</div>
             </div>
         </div>
     </div>
 
-    <!-- MAIN NAVBAR -->
-    <nav class="sticky top-0 z-40 bg-navy-900/95 backdrop-blur border-b border-slate-800 text-white shadow-xl">
+    <!-- Products by Application Section -->
+    <section id="products" class="py-20 bg-industrial-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Brand Logo -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-11 h-11 bg-gradient-to-br from-amber-500 to-amber-600 rounded-lg flex items-center justify-center text-navy-950 font-bold text-2xl shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
-                        <i class="fa-solid fa-bolt"></i>
-                    </div>
-                    <div>
-                        <span class="font-display font-bold text-xl sm:text-2xl tracking-wider text-white block leading-none">POWER LEAD</span>
-                        <span class="text-[10px] tracking-widest text-amber-400 font-semibold uppercase block mt-1">ENTERPRISES PVT. LTD.</span>
-                    </div>
-                </a>
-
-                <!-- Desktop Navigation Links -->
-                <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
-                    <a href="#overview" class="hover:text-amber-400 transition-colors">Overview</a>
-                    <a href="#products" class="hover:text-amber-400 transition-colors">Products</a>
-                    <a href="#specs" class="hover:text-amber-400 transition-colors">Technical Specs</a>
-                    <a href="#process" class="hover:text-amber-400 transition-colors">10-Stage Process</a>
-                    <a href="#facility" class="hover:text-amber-400 transition-colors">Facility</a>
-                    <a href="#contact" class="hover:text-amber-400 transition-colors">Contact</a>
-                </div>
-
-                <!-- Header CTA Button -->
-                <div class="hidden sm:flex items-center gap-3">
-                    <button onclick="openModal()" class="bg-amber-500 hover:bg-amber-600 text-navy-950 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 shadow-md shadow-amber-500/20 flex items-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-file-signature"></i> Request Quote
-                    </button>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="lg:hidden flex items-center">
-                    <button id="mobileMenuBtn" class="text-slate-300 hover:text-white p-2 rounded-lg">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-xs uppercase tracking-widest text-industrial-accent font-bold">One Platform, Four Application Families</h2>
+                <h3 class="text-3xl sm:text-4xl font-black text-white">Engineered For Specific Duty Cycles</h3>
+                <p class="text-industrial-muted text-sm sm:text-base">Designed for zero failure under rigorous utility and industrial operating environments.</p>
             </div>
-        </div>
 
-        <!-- Mobile Drawer Menu -->
-        <div id="mobileMenu" class="hidden lg:hidden bg-navy-950 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
-            <a href="#overview" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-amber-400 font-medium">Overview</a>
-            <a href="#products" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-amber-400 font-medium">Products</a>
-            <a href="#specs" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-amber-400 font-medium">Technical Specs</a>
-            <a href="#process" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-amber-400 font-medium">10-Stage Process</a>
-            <a href="#facility" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-amber-400 font-medium">Facility</a>
-            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-amber-400 font-medium">Contact</a>
-            <div class="pt-2 space-y-2">
-                <button onclick="openModal(); toggleMobileMenu();" class="w-full bg-amber-500 text-navy-950 py-3 rounded-lg font-bold text-center block">
-                    Request Quote
-                </button>
-                <a href="#" onclick="downloadCatalog(); toggleMobileMenu(); return false;" class="w-full bg-slate-800 text-amber-400 border border-amber-500/30 py-3 rounded-lg font-semibold text-center block">
-                    <i class="fa-solid fa-file-pdf mr-2"></i> Download Catalogue PDF
-                </a>
+            <!-- Tabs Navigation -->
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <button onclick="switchAppTab('solar')" id="btn-solar" class="app-tab-btn px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider bg-industrial-accent text-industrial-dark shadow-md transition">Solar Transformers</button>[cite: 6]
+                <button onclick="switchAppTab('wind')" id="btn-wind" class="app-tab-btn px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider bg-industrial-card text-industrial-muted border border-industrial-border hover:text-white transition">Wind Transformers</button>[cite: 6]
+                <button onclick="switchAppTab('rectifier')" id="btn-rectifier" class="app-tab-btn px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider bg-industrial-card text-industrial-muted border border-industrial-border hover:text-white transition">Rectifier Transformers</button>[cite: 6]
+                <button onclick="switchAppTab('special')" id="btn-special" class="app-tab-btn px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider bg-industrial-card text-industrial-muted border border-industrial-border hover:text-white transition">Special Application</button>[cite: 6]
             </div>
-        </div>
-    </nav>
 
-    <!-- HERO SECTION -->
-    <section class="relative bg-navy-900 text-white overflow-hidden py-20 lg:py-28 tech-grid-bg">
-        <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-900/90 to-slate-900/80"></div>
-        
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Left Hero Content -->
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-400 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
-                        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                        Next-Generation Transformer Works
+            <!-- Tab Content Container -->
+            <div class="bg-industrial-navy border border-industrial-border rounded-2xl p-6 sm:p-10 shadow-2xl">
+                <div id="tab-solar" class="app-tab-pane grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="inline-block px-3 py-1 rounded bg-amber-500/10 text-industrial-accent text-xs font-bold uppercase">Solar Inverter Evacuation</div>
+                        <h4 class="text-2xl sm:text-3xl font-black text-white">Solar Step-Up Transformers</h4>
+                        <p class="text-industrial-muted leading-relaxed text-sm sm:text-base">
+                            Step-up units tailored for solar inverter blocks and pooling substations. Designed with dual-LV split windings, 5-winding options, harmonic and DC-bias tolerant core architecture, and high cyclic-load thermal margins[cite: 6].
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li><i class="fa-solid fa-check text-industrial-accent mr-2"></i> Typical rating: 2–20 MVA, 33 kV HV</li>[cite: 6]
+                            <li><i class="fa-solid fa-check text-industrial-accent mr-2"></i> Split LV (4 x 0.69 kV or 11 kV) with ONAN cooling</li>[cite: 6]
+                            <li><i class="fa-solid fa-check text-industrial-accent mr-2"></i> Biodegradable Natural Ester insulating fluid options</li>[cite: 5, 7]
+                        </ul>
                     </div>
-
-                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
-                        Innovation-Led <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500">Power & Distribution</span> Transformers
-                    </h1>
-
-                    <p class="text-slate-300 text-lg sm:text-xl font-light max-w-2xl leading-relaxed">
-                        Engineered for utilities, solar/wind evacuation, heavy industry, and railways. Customized up to <span class="text-amber-400 font-semibold">16 MVA, 33 kV Class</span> with Mineral & Natural Ester cooling options.
-                    </p>
-
-                    <!-- Key Metric Badges Grid -->
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-slate-800/80">
-                        <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700/50">
-                            <div class="font-display text-2xl sm:text-3xl font-bold text-amber-400">16 MVA</div>
-                            <div class="text-xs text-slate-400 mt-0.5">Max Rating (3-Phase)</div>
-                        </div>
-                        <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700/50">
-                            <div class="font-display text-2xl sm:text-3xl font-bold text-amber-400">33 kV</div>
-                            <div class="text-xs text-slate-400 mt-0.5">HV Insulation Class</div>
-                        </div>
-                        <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700/50">
-                            <div class="font-display text-2xl sm:text-3xl font-bold text-emerald-400">99.7%+</div>
-                            <div class="text-xs text-slate-400 mt-0.5">Rated Efficiency</div>
-                        </div>
-                        <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700/50">
-                            <div class="font-display text-2xl sm:text-3xl font-bold text-amber-400">500 MVA</div>
-                            <div class="text-xs text-slate-400 mt-0.5">Annual Capacity</div>
-                        </div>
-                    </div>
-
-                    <!-- Call To Action Buttons -->
-                    <div class="flex flex-wrap gap-4 pt-2">
-                        <button onclick="openModal()" class="bg-amber-500 hover:bg-amber-600 text-navy-950 px-8 py-4 rounded-xl font-bold text-base transition-all shadow-lg shadow-amber-500/25 flex items-center gap-3">
-                            <i class="fa-solid fa-sliders"></i> Configure Transformer RFQ
-                        </button>
-                        <button onclick="downloadCatalog()" class="bg-slate-800 hover:bg-slate-700 text-amber-400 border border-amber-500/30 px-6 py-4 rounded-xl font-semibold text-base transition-all flex items-center gap-2 shadow-md">
-                            <i class="fa-solid fa-file-pdf text-amber-500"></i> Download Catalog PDF
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Right Graphic Showcase Card -->
-                <div class="lg:col-span-5">
-                    <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 to-blue-600 rounded-2xl blur opacity-30"></div>
-                        <div class="relative bg-slate-900 border border-slate-700 rounded-2xl p-6 space-y-6 shadow-2xl">
-                            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
-                                    <span class="text-sm font-medium text-slate-300">Live Production Line Standard</span>
-                                </div>
-                                <span class="text-xs bg-slate-800 text-amber-400 px-2.5 py-1 rounded font-mono">ONAN / ONAF</span>
+                    <div class="lg:col-span-6 bg-industrial-card p-6 rounded-xl border border-industrial-border/60">
+                        <div class="text-xs font-bold uppercase tracking-wider text-industrial-accent mb-4">Technical Highlights</div>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex justify-between border-b border-industrial-border/50 pb-2">
+                                <span class="text-industrial-muted">HV Voltage Class</span>
+                                <span class="font-semibold text-white">33 kV</span>[cite: 6]
                             </div>
-
-                            <!-- Industrial Asset Graphic representation -->
-                            <div class="relative h-60 bg-gradient-to-t from-slate-950 to-slate-800 rounded-xl border border-slate-800 flex items-center justify-center p-4 overflow-hidden group">
-                                <i class="fa-solid fa-charging-station text-8xl text-slate-700/50 group-hover:text-amber-500/20 transition-colors"></i>
-                                <div class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent">
-                                    <div class="text-xs font-mono text-amber-400 mb-1">UNIT SPECIFICATION</div>
-                                    <div class="text-white font-bold text-lg">3-Phase Substation Class Transformer</div>
-                                    <div class="text-xs text-slate-400">Step-lap mitred CRGO core | Laser-scribed</div>
-                                </div>
+                            <div class="flex justify-between border-b border-industrial-border/50 pb-2">
+                                <span class="text-industrial-muted">LV Configuration</span>
+                                <span class="font-semibold text-white">Split Windings (0.69 / 11 kV)</span>[cite: 6]
                             </div>
-
-                            <div class="grid grid-cols-2 gap-3 text-xs">
-                                <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700">
-                                    <div class="text-slate-400">Short-Circuit Withstand</div>
-                                    <div class="text-white font-semibold mt-1">2 Seconds Verified</div>
-                                </div>
-                                <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700">
-                                    <div class="text-slate-400">Warranty Support</div>
-                                    <div class="text-white font-semibold mt-1">12-24 Months Standard</div>
-                                </div>
-                            </div>
-
-                            <div class="p-3 bg-amber-500/10 rounded-lg border border-amber-500/20 flex items-center justify-between gap-3">
-                                <div class="flex items-center gap-3">
-                                    <i class="fa-solid fa-qrcode text-2xl text-amber-400"></i>
-                                    <div class="text-xs text-slate-300">
-                                        <span class="font-semibold text-amber-400">QR-Coded Digital Certificate:</span> Drawing files, heat numbers & test logs.
-                                    </div>
-                                </div>
-                                <button onclick="openQrModal()" class="text-xs bg-amber-500 hover:bg-amber-600 text-navy-950 font-bold px-3 py-1.5 rounded transition-all shrink-0">
-                                    Preview
-                                </button>
+                            <div class="flex justify-between border-b border-industrial-border/50 pb-2">
+                                <span class="text-industrial-muted">Cooling Standard</span>
+                                <span class="font-semibold text-white">ONAN</span>[cite: 6]
                             </div>
                         </div>
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
-
-    <!-- CERTIFICATIONS & COMPLIANCE STRIP -->
-    <section class="bg-navy-950 py-8 border-y border-slate-800 text-slate-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="text-center md:text-left">
-                    <h3 class="text-xs uppercase font-bold tracking-widest text-amber-400">Quality & Compliance Rigor</h3>
-                    <p class="text-sm text-slate-400">Built and routine-tested strictly to international power utility standards</p>
+                <div id="tab-wind" class="app-tab-pane hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="inline-block px-3 py-1 rounded bg-amber-500/10 text-industrial-accent text-xs font-bold uppercase">Turbine & Collector Substation Duty</div>
+                        <h4 class="text-2xl sm:text-3xl font-black text-white">Wind Farm Step-Up Units</h4>
+                        <p class="text-industrial-muted leading-relaxed text-sm sm:text-base">
+                            Compact step-ups built explicitly to withstand high-vibration mechanical stressors, frequent wind-gust energisation spikes, and harsh coastal/remote operating conditions with environment-safe ester insulation[cite: 6].
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li><i class="fa-solid fa-check text-industrial-accent mr-2"></i> Typical Rating: 1.6 to 20 MVA</li>[cite: 6]
+                            <li><i class="fa-solid fa-check text-industrial-accent mr-2"></i> HV: 33 kV or 11 kV | LV: 0.69 - 11 kV</li>[cite: 6]
+                            <li><i class="fa-solid fa-check text-industrial-accent mr-2"></i> ONAN / ONAF Cooling configurations</li>[cite: 6]
+                        </ul>
+                    </div>
+                    <div class="lg:col-span-6 bg-industrial-card p-6 rounded-xl border border-industrial-border/60">
+                        <div class="text-xs font-bold uppercase tracking-wider text-industrial-accent mb-4">Technical Highlights</div>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex justify-between border-b border-industrial-border/50 pb-2">
+                                <span class="text-industrial-muted">Rating Range</span>
+                                <span class="font-semibold text-white">1.6 MVA - 20 MVA</span>[cite: 6]
+                            </div>
+                            <div class="flex justify-between border-b border-industrial-border/50 pb-2">
+                                <span class="text-industrial-muted">Mechanical Design</span>
+                                <span class="font-semibold text-white">High-Vibration & Seismic Rated</span>[cite: 6]
+                            </div>
+                            <div class="flex justify-between border-b border-industrial-border/50 pb-2">
+                                <span class="text-industrial-muted">Cooling Mode</span>
+                                <span class="font-semibold text-white">ONAN / ONAF</span>[cite: 6]
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs font-semibold">
-                    <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-2.5 rounded-xl text-amber-400 shadow-sm hover:border-amber-500/40 transition-colors">
-                        <i class="fa-solid fa-certificate text-lg"></i>
-                        <span>IS 2026 / IS 1180</span>
+
+                <div id="tab-rectifier" class="app-tab-pane hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="inline-block px-3 py-1 rounded bg-amber-500/10 text-industrial-accent text-xs font-bold uppercase">Electro-Chemical & Traction</div>
+                        <h4 class="text-2xl sm:text-3xl font-black text-white">Rectifier & Converter Transformers</h4>
+                        <p class="text-industrial-muted leading-relaxed text-sm sm:text-base">
+                            Engineered for industrial DC-drive, railway traction, and electrochemical loads featuring specialized phase-shifting windings, interphase reactors, and high harmonic-current and short-circuit capability[cite: 6].
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li><i class="fa-solid fa-check text-industrial-accent mr-2"></i> Up to 20 MVA, 33 kV class</li>[cite: 6]
+                            <li><i class="fa-solid fa-check text-industrial-accent mr-2"></i> 6 / 12 / 24-Pulse IEC 61378 engineering practice</li>[cite: 6]
+                            <li><i class="fa-solid fa-check text-industrial-accent mr-2"></i> Enhanced thermal margins for continuous harmonic loading</li>
+                        </ul>
                     </div>
-                    <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-2.5 rounded-xl text-amber-400 shadow-sm hover:border-amber-500/40 transition-colors">
-                        <i class="fa-solid fa-globe text-lg"></i>
-                        <span>IEC 60076 Series</span>
+                    <div class="lg:col-span-6 bg-industrial-card p-6 rounded-xl border border-industrial-border/60">
+                        <div class="text-xs font-bold uppercase tracking-wider text-industrial-accent mb-4">Technical Highlights</div>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex justify-between border-b border-industrial-border/50 pb-2">
+                                <span class="text-industrial-muted">Pulse Config</span>
+                                <span class="font-semibold text-white">6 / 12 / 24 Pulse</span>[cite: 6]
+                            </div>
+                            <div class="flex justify-between border-b border-industrial-border/50 pb-2">
+                                <span class="text-industrial-muted">Design Standard</span>
+                                <span class="font-semibold text-white">IEC 61378 Practice</span>[cite: 6]
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-2.5 rounded-xl text-amber-400 shadow-sm hover:border-amber-500/40 transition-colors">
-                        <i class="fa-solid fa-vial-circle-check text-lg"></i>
-                        <span>NABL Accredited Test Bay</span>
+                </div>
+
+                <div id="tab-special" class="app-tab-pane hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="inline-block px-3 py-1 rounded bg-amber-500/10 text-industrial-accent text-xs font-bold uppercase">Custom Engineering</div>
+                        <h4 class="text-2xl sm:text-3xl font-black text-white">Furnace & Special Application Units</h4>
+                        <p class="text-industrial-muted leading-relaxed text-sm sm:text-base">
+                            Furnace, earthing, converter, auxiliary, and custom transformer units built strictly to customer specification with tailored impedance, special tapping ranges, and ruggedized enclosures[cite: 6].
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li><i class="fa-solid fa-check text-industrial-accent mr-2"></i> Up to 20 MVA, 33 kV class</li>[cite: 6]
+                            <li><i class="fa-solid fa-check text-industrial-accent mr-2"></i> Project-specific vector & impedance matching</li>[cite: 5, 6]
+                        </ul>
                     </div>
-                    <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-2.5 rounded-xl text-amber-400 shadow-sm hover:border-amber-500/40 transition-colors">
-                        <i class="fa-solid fa-shield-check text-lg"></i>
-                        <span>CBIP Guidelines Compliant</span>
+                    <div class="lg:col-span-6 bg-industrial-card p-6 rounded-xl border border-industrial-border/60">
+                        <div class="text-xs font-bold uppercase tracking-wider text-industrial-accent mb-4">Technical Highlights</div>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex justify-between border-b border-industrial-border/50 pb-2">
+                                <span class="text-industrial-muted">Customization</span>
+                                <span class="font-semibold text-white">100% Tailored to Tender Specs</span>[cite: 5, 6]
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- OVERVIEW / INNOVATION HIGHLIGHTS -->
-    <section id="overview" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs uppercase font-bold tracking-widest text-amber-600 mb-2">Innovation Built In</h2>
-                <p class="font-display text-3xl sm:text-4xl font-bold text-slate-900">What Makes Our New-Generation Works Different</p>
-                <div class="w-16 h-1 bg-amber-500 mx-auto mt-4 rounded-full"></div>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 hover:border-amber-500/50 hover:shadow-xl transition-all duration-300 group">
-                    <div class="w-12 h-12 bg-navy-900 rounded-xl flex items-center justify-center text-amber-400 text-xl mb-5 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-microchip"></i>
-                    </div>
-                    <h3 class="font-bold text-lg text-slate-900 mb-2">3D Digital Twin Design</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        FEM models of leakage flux, stray loss, short-circuit forces and thermal hot-spots optimized before steel cutting.
-                    </p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 hover:border-amber-500/50 hover:shadow-xl transition-all duration-300 group">
-                    <div class="w-12 h-12 bg-navy-900 rounded-xl flex items-center justify-center text-amber-400 text-xl mb-5 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-layer-group"></i>
-                    </div>
-                    <h3 class="font-bold text-lg text-slate-900 mb-2">CTC & Upgraded Paper</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Continuously Transposed Conductors cut eddy losses. Epoxy-bonded CTC & TUK paper raise short-circuit strength.
-                    </p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 hover:border-amber-500/50 hover:shadow-xl transition-all duration-300 group">
-                    <div class="w-12 h-12 bg-navy-900 rounded-xl flex items-center justify-center text-amber-400 text-xl mb-5 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-leaf"></i>
-                    </div>
-                    <h3 class="font-bold text-lg text-slate-900 mb-2">Natural Ester Fluid</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Biodegradable, high fire-point fluid options for solar farms, crowded urban buildings, and eco-sensitive sites.
-                    </p>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 hover:border-amber-500/50 hover:shadow-xl transition-all duration-300 group">
-                    <div class="w-12 h-12 bg-navy-900 rounded-xl flex items-center justify-center text-amber-400 text-xl mb-5 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-network-wired"></i>
-                    </div>
-                    <h3 class="font-bold text-lg text-slate-900 mb-2">Smart-Monitoring Ready</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Built-in sensor pockets for online DGA, fiber-optic winding hot-spots, and remote condition data via IEC 61850.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRODUCTS BY APPLICATION SECTION (INTERACTIVE TABS) -->
-    <section id="products" class="py-20 bg-slate-900 text-white">
+    <!-- Technical Specifications Matrix -->
+    <section id="specs" class="py-20 bg-industrial-navy border-t border-industrial-border/40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-                <div>
-                    <h2 class="text-xs uppercase font-bold tracking-widest text-amber-400 mb-2">Tailored Engineering</h2>
-                    <p class="font-display text-3xl sm:text-4xl font-bold">Products by Application</p>
+                <div class="space-y-2">
+                    <h2 class="text-xs uppercase tracking-widest text-industrial-accent font-bold">Standard Offering & Ratings</h2>
+                    <h3 class="text-3xl font-black text-white">Technical Specifications Matrix</h3>
                 </div>
-                <p class="text-slate-400 text-sm mt-2 md:mt-0 max-w-md">One platform, four specialized application families engineered for precise duty cycles.</p>
-            </div>
-
-            <!-- Tabs Header -->
-            <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-4 mb-8" id="productTabs">
-                <button onclick="switchTab('solar')" id="tab-solar" class="tab-btn active bg-amber-500 text-navy-950 font-bold px-5 py-3 rounded-xl text-sm transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-sun"></i> Solar Transformers
-                </button>
-                <button onclick="switchTab('wind')" id="tab-wind" class="tab-btn bg-slate-800 text-slate-300 hover:text-white font-semibold px-5 py-3 rounded-xl text-sm transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-wind"></i> Wind Transformers
-                </button>
-                <button onclick="switchTab('rectifier')" id="tab-rectifier" class="tab-btn bg-slate-800 text-slate-300 hover:text-white font-semibold px-5 py-3 rounded-xl text-sm transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-plug-circle-bolt"></i> Rectifier Units
-                </button>
-                <button onclick="switchTab('special')" id="tab-special" class="tab-btn bg-slate-800 text-slate-300 hover:text-white font-semibold px-5 py-3 rounded-xl text-sm transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-gears"></i> Special Applications
-                </button>
-            </div>
-
-            <!-- Tab Content Display Container -->
-            <div id="productContent" class="bg-slate-800/60 border border-slate-700/70 rounded-2xl p-6 lg:p-8">
-                <!-- Content dynamically managed by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- TECHNICAL SPECIFICATION MATRIX (FILTERABLE TABLE) -->
-    <section id="specs" class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between mb-12 gap-4">
-                <div class="text-center md:text-left">
-                    <h2 class="text-xs uppercase font-bold tracking-widest text-amber-600 mb-1">Technical Rigor</h2>
-                    <p class="font-display text-3xl sm:text-4xl font-bold text-slate-900">Standard Product Range & Specs</p>
-                    <p class="text-slate-600 text-sm mt-1">Filter ratings to view tailored technical parameters. Hover over Vector Groups for details.</p>
-                </div>
-                <div>
-                    <button onclick="downloadCatalog()" class="bg-navy-900 hover:bg-slate-800 text-amber-400 border border-amber-500/30 px-5 py-3 rounded-xl font-bold text-xs flex items-center gap-2 shadow-md transition-all">
-                        <i class="fa-solid fa-download text-amber-400"></i> Download Full GTP Specs (PDF)
-                    </button>
+                <div class="mt-4 md:mt-0 flex gap-2">
+                    <button onclick="filterSpecs('all')" class="spec-filter-btn px-4 py-2 bg-industrial-accent text-industrial-dark rounded text-xs font-bold uppercase transition">All Ratings</button>
+                    <button onclick="filterSpecs('low')" class="spec-filter-btn px-4 py-2 bg-industrial-card text-industrial-muted border border-industrial-border rounded text-xs font-bold uppercase hover:text-white transition">1 - 3.15 MVA</button>
+                    <button onclick="filterSpecs('high')" class="spec-filter-btn px-4 py-2 bg-industrial-card text-industrial-muted border border-industrial-border rounded text-xs font-bold uppercase hover:text-white transition">5 - 20 MVA</button>
                 </div>
             </div>
 
-            <!-- Filter buttons for table -->
-            <div class="flex justify-center md:justify-start flex-wrap gap-2 mb-6">
-                <button onclick="filterTable('all')" class="spec-filter-btn bg-navy-900 text-white text-xs font-semibold px-4 py-2 rounded-lg">All Ratings</button>
-                <button onclick="filterTable('1-3.15')" class="spec-filter-btn bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 text-xs font-semibold px-4 py-2 rounded-lg">1 - 3.15 MVA</button>
-                <button onclick="filterTable('5-8')" class="spec-filter-btn bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 text-xs font-semibold px-4 py-2 rounded-lg">5 - 8 MVA</button>
-                <button onclick="filterTable('10-12.5')" class="spec-filter-btn bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 text-xs font-semibold px-4 py-2 rounded-lg">10 - 12.5 MVA</button>
-                <button onclick="filterTable('16')" class="spec-filter-btn bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 text-xs font-semibold px-4 py-2 rounded-lg">16 MVA</button>
-            </div>
-
-            <!-- Responsive Table -->
-            <div class="overflow-x-auto bg-white rounded-2xl shadow-sm border border-slate-200">
-                <table class="w-full text-left border-collapse text-sm">
+            <div class="overflow-x-auto rounded-xl border border-industrial-border shadow-2xl">
+                <table class="w-full text-left border-collapse bg-industrial-card text-sm">
                     <thead>
-                        <tr class="bg-navy-900 text-amber-400 font-display text-base">
-                            <th class="py-4 px-6 font-semibold">Rating (MVA)</th>
-                            <th class="py-4 px-6 font-semibold">HV Class</th>
-                            <th class="py-4 px-6 font-semibold">LV Options</th>
-                            <th class="py-4 px-6 font-semibold">Cooling</th>
-                            <th class="py-4 px-6 font-semibold">Tapping Range</th>
-                            <th class="py-4 px-6 font-semibold">Vector Group (Hover Info)</th>
+                        <tr class="bg-industrial-dark text-industrial-accent uppercase text-xs tracking-wider border-b border-industrial-border">
+                            <th class="p-4 sm:p-5">Rating (MVA)</th>
+                            <th class="p-4 sm:p-5">HV Class</th>
+                            <th class="p-4 sm:p-5">LV Voltage</th>
+                            <th class="p-4 sm:p-5">Cooling</th>
+                            <th class="p-4 sm:p-5">Vector Group</th>
+                            <th class="p-4 sm:p-5">Tapping Range</th>
                         </tr>
                     </thead>
-                    <tbody id="specTableBody" class="divide-y divide-slate-200">
-                        <!-- Table Rows filled by JS -->
+                    <tbody class="divide-y divide-industrial-border/40" id="spec-table-body">
+                        <tr class="spec-row hover:bg-industrial-navy/55 transition" data-category="low">
+                            <td class="p-4 sm:p-5 font-bold text-white">1 - 3.15 MVA</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300">33 kV</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300">11 / 6.6 / 0.433 kV</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300">ONAN</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300"><span class="cursor-help border-b border-dotted border-industrial-accent" title="Dyn11 / YNd11 Phase Shift Configuration">Dyn11 / YNd11</span></td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-industrial-accent font-medium">OCTC ±5% or OLTC</td>[cite: 5]
+                        </tr>
+                        <tr class="spec-row hover:bg-industrial-navy/55 transition" data-category="high">
+                            <td class="p-4 sm:p-5 font-bold text-white">5 - 8 MVA</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300">33 kV</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300">11 / 6.6 / 3.3 kV</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300">ONAN</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300"><span class="cursor-help border-b border-dotted border-industrial-accent" title="Standard distribution vector with neutral point">Dyn11 / YNd11</span></td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-industrial-accent font-medium">OLTC ±10%, 16 steps</td>[cite: 5]
+                        </tr>
+                        <tr class="spec-row hover:bg-industrial-navy/55 transition" data-category="high">
+                            <td class="p-4 sm:p-5 font-bold text-white">10 - 12.5 MVA</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300">33 kV</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300">11 / 6.6 / 3.3 kV</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300">ONAN / ONAF</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300"><span class="cursor-help border-b border-dotted border-industrial-accent" title="Dyn11 / YNd11 / YNyn0 configuration">Dyn11 / YNd11 / YNyn0</span></td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-industrial-accent font-medium">OLTC ±10%, 16 steps</td>[cite: 5]
+                        </tr>
+                        <tr class="spec-row hover:bg-industrial-navy/55 transition" data-category="high">
+                            <td class="p-4 sm:p-5 font-bold text-white">16 - 20 MVA</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300">33 kV</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300">11 kV</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300">ONAN / ONAF</td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-slate-300"><span class="cursor-help border-b border-dotted border-industrial-accent" title="Dyn11 / YNd11 High Power Group">Dyn11 / YNd11</span></td>[cite: 5]
+                            <td class="p-4 sm:p-5 text-industrial-accent font-medium">OLTC ±10%, 16 steps</td>[cite: 5]
+                        </tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- Detailed Baseline Features Grid -->
-            <div class="mt-12 grid md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="text-amber-600 font-bold mb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-temperature-arrow-up"></i> Temperature Rise Limits
+            <!-- Insulation withstand note -->
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-industrial-dark p-5 rounded-xl border border-industrial-border/60">
+                    <div class="text-xs uppercase tracking-wider text-industrial-muted">Um 36 kV Insulation</div>[cite: 5]
+                    <div class="text-xl font-black text-white mt-1">170 kV</div>
+                    <div class="text-xs text-industrial-accent mt-1">Lightning Impulse Withstand</div>[cite: 5]
+                </div>
+                <div class="bg-industrial-dark p-5 rounded-xl border border-industrial-border/60">
+                    <div class="text-xs uppercase tracking-wider text-industrial-muted">Power-Frequency Withstand</div>[cite: 5]
+                    <div class="text-xl font-black text-white mt-1">70 kV</div>
+                    <div class="text-xs text-industrial-accent mt-1">Dielectric Strength Tested</div>[cite: 5]
+                </div>
+                <div class="bg-industrial-dark p-5 rounded-xl border border-industrial-border/60">
+                    <div class="text-xs uppercase tracking-wider text-industrial-muted">Short-Circuit Withstand</div>[cite: 5, 7]
+                    <div class="text-xl font-black text-white mt-1">2 Seconds</div>[cite: 5, 7]
+                    <div class="text-xs text-industrial-accent mt-1">Verified by Calculation & Test</div>[cite: 5, 7]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manufacturing Facility Section -->
+    <section id="facility" class="py-20 bg-industrial-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-xs uppercase tracking-widest text-industrial-accent font-bold">Purpose-Planned 4-Acre Works</h2>
+                <h3 class="text-3xl sm:text-4xl font-black text-white">Advanced Manufacturing & Quality Infrastructure</h3>
+                <p class="text-industrial-muted text-sm sm:text-base">One-way material flow from raw material store to dispatch yard with 50-tonne overhead crane capacity[cite: 8].</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="bg-industrial-navy border border-industrial-border rounded-xl p-6 space-y-4 shadow-xl">
+                    <div class="w-12 h-12 rounded-lg bg-industrial-card flex items-center justify-center text-industrial-accent text-xl font-bold">
+                        <i class="fa-solid fa-microchip"></i>
                     </div>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        ONAN Cooling: 35/40/50 K top oil; 40/50/55 K winding (average); designed specifically for high ambient environments up to 50°C.
+                    <h4 class="text-xl font-bold text-white">3D Electromagnetic Digital Twin</h4>
+                    <p class="text-industrial-muted text-sm leading-relaxed">
+                        FEM models of leakage flux, stray loss, short-circuit forces, and hot-spot simulation before any steel is cut, ensuring zero prototype errors[cite: 7].
                     </p>
                 </div>
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="text-amber-600 font-bold mb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-shield-cat"></i> Protection Accessories
+
+                <div class="bg-industrial-navy border border-industrial-border rounded-xl p-6 space-y-4 shadow-xl">
+                    <div class="w-12 h-12 rounded-lg bg-industrial-card flex items-center justify-center text-industrial-accent text-xl font-bold">
+                        <i class="fa-solid fa-shield-halved"></i>
                     </div>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Standard Buchholz relay, PRV, MOG, OTI/WTI temperature sensors, magnetic oil level gauge, silica-gel breather & digital scanners.
+                    <h4 class="text-xl font-bold text-white">Continuously Transposed Conductors</h4>
+                    <p class="text-industrial-muted text-sm leading-relaxed">
+                        CTC conductors cut eddy losses, while epoxy-bonded CTC and TUK paper raise short-circuit strength and overload life expectancy[cite: 7].
                     </p>
                 </div>
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="text-amber-600 font-bold mb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-box-archive"></i> Full Vacuum Tank Design
+
+                <div class="bg-industrial-navy border border-industrial-border rounded-xl p-6 space-y-4 shadow-xl">
+                    <div class="w-12 h-12 rounded-lg bg-industrial-card flex items-center justify-center text-industrial-accent text-xl font-bold">
+                        <i class="fa-solid fa-qrcode"></i>
                     </div>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Conventional, corrugated, or plate-and-radiator tanks tested to full vacuum withstand capability and stringent leak-checks.
+                    <h4 class="text-xl font-bold text-white">QR-Coded Digital Certificate</h4>
+                    <p class="text-industrial-muted text-sm leading-relaxed">
+                        Every transformer leaves with a QR link to its drawing files, material heat numbers, test reports, and complete spares list from day one[cite: 5, 7].
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 10-STAGE DESIGN TO DELIVERY ROADMAP -->
-    <section id="process" class="py-20 bg-navy-950 text-white">
+    <!-- Contact & Footer Section -->
+    <section id="contact" class="py-20 bg-industrial-navy border-t border-industrial-border/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs uppercase font-bold tracking-widest text-amber-400 mb-2">Quality Controlled Execution</h2>
-                <p class="font-display text-3xl sm:text-4xl font-bold">10-Stage Design to Delivery</p>
-                <p class="text-slate-400 text-sm mt-2">Every step governed by a hold-point and a signed quality record.</p>
-            </div>
-
-            <!-- Accordion Timeline -->
-            <div class="max-w-4xl mx-auto space-y-4" id="accordionContainer">
-                <!-- Accordion Items generated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- MANUFACTURING FACILITY & CAPACITY -->
-    <section id="facility" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                
-                <div>
-                    <h2 class="text-xs uppercase font-bold tracking-widest text-amber-600 mb-2">Infrastructure & QA</h2>
-                    <p class="font-display text-3xl sm:text-4xl font-bold text-slate-900 mb-6">Purpose-Planned 4-Acre Works</p>
-                    <p class="text-slate-600 text-base leading-relaxed mb-6">
-                        Designed for one-way material flow from incoming raw-material inspection to final routine testing and heavy-load dispatch yard.
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-6 space-y-6">
+                    <h2 class="text-xs uppercase tracking-widest text-industrial-accent font-bold">Get In Touch</h2>
+                    <h3 class="text-3xl font-black text-white">Let's Engineer Your Next Transformer</h3>
+                    <p class="text-industrial-muted text-sm leading-relaxed">
+                        Send us your load profile, site conditions, and tender specifications. Our engineering team will return with a design-backed proposal[cite: 8].
                     </p>
-
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0 font-bold">
-                                01
+                    
+                    <div class="space-y-4 pt-4 text-sm">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded bg-industrial-card flex items-center justify-center text-industrial-accent flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-building"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-slate-900">Humidity-Controlled Winding Zone</h4>
-                                <p class="text-slate-600 text-sm">Dust and moisture controlled environment for insulation-critical winding operations.</p>
+                                <strong class="block text-white">Registered Office:</strong>
+                                <span class="text-industrial-muted">SF No. 408/4C, Marattipalayam Cross Road, Vellakuttai PO, Vaniyambadi Taluk, Tirupattur District, Tamil Nadu, India - 635752</span>[cite: 8]
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0 font-bold">
-                                02
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900">50-Tonne Heavy Overhead Crane</h4>
-                                <p class="text-slate-600 text-sm">Dedicated heavy lift capacity for core-coil assembly and 16 MVA unit tanking.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0 font-bold">
-                                03
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded bg-industrial-card flex items-center justify-center text-industrial-accent flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-industry"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-slate-900">Vapour-Phase Drying (VPD) & Oil Lab</h4>
-                                <p class="text-slate-600 text-sm">Kerosene-vapour drying ensuring low residual moisture for partial-discharge-free operation.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Plant Layout Graphic -->
-                <div class="bg-slate-900 text-white rounded-2xl p-8 border border-slate-800 shadow-xl">
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="text-xs font-mono text-amber-400">PLANT CAPACITY & FLOW</span>
-                        <span class="bg-emerald-500/20 text-emerald-400 text-xs font-semibold px-3 py-1 rounded-full">500 MVA / Year</span>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4 text-center">
-                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-                            <i class="fa-solid fa-warehouse text-amber-400 text-2xl mb-2"></i>
-                            <div class="text-xs text-slate-400">Site Area</div>
-                            <div class="font-bold text-white text-lg">4 Acres</div>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-                            <i class="fa-solid fa-truck-ramp-box text-amber-400 text-2xl mb-2"></i>
-                            <div class="text-xs text-slate-400">Crane Capacity</div>
-                            <div class="font-bold text-white text-lg">50 Tonne</div>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-                            <i class="fa-solid fa-vial-circle-check text-amber-400 text-2xl mb-2"></i>
-                            <div class="text-xs text-slate-400">Testing Lab</div>
-                            <div class="font-bold text-white text-lg">In-House Routine</div>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-                            <i class="fa-solid fa-award text-amber-400 text-2xl mb-2"></i>
-                            <div class="text-xs text-slate-400">Type Tests</div>
-                            <div class="font-bold text-white text-lg">NABL Accredited</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT & REQUEST FOR QUOTE SECTION -->
-    <section id="contact" class="py-20 bg-slate-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-12 gap-12">
-                
-                <!-- Contact Details -->
-                <div class="lg:col-span-5 space-y-8">
-                    <div>
-                        <h2 class="text-xs uppercase font-bold tracking-widest text-amber-400 mb-2">Get In Touch</h2>
-                        <p class="font-display text-3xl sm:text-4xl font-bold">Let's Engineer Your Next Transformer</p>
-                        <p class="text-slate-400 text-sm mt-3 leading-relaxed">
-                            Send us your load profile, site conditions, or tender specification. Our design team will respond with a technical offer.
-                        </p>
-                    </div>
-
-                    <div class="space-y-6 text-sm">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-                            <div>
-                                <div class="font-bold text-white">Registered Office & Works</div>
-                                <div class="text-slate-400 mt-1 leading-relaxed">
-                                    SF No. 408/4C, Marattipalayam Cross Road, Vellakuttai PO, Vaniyambadi Taluk, Tirupattur, Tamil Nadu - 635752
-                                </div>
+                                <strong class="block text-white">Factory Location:</strong>
+                                <span class="text-industrial-muted">SF No. 190/2, NH 48, Chennai to Bangalore Highway, Vadapudupattu Village, Ambur Taluk, Tirupattur District, Tamil Nadu, India - 635812</span>[cite: 8]
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 rounded bg-industrial-card flex items-center justify-center text-industrial-accent flex-shrink-0">
                                 <i class="fa-solid fa-phone"></i>
                             </div>
                             <div>
-                                <div class="font-bold text-white">Direct Phone Lines</div>
-                                <div class="text-slate-400 mt-1">
-                                    +91 94869 14343 <br> +91 96006 69866
-                                </div>
+                                <strong class="block text-white">Phone Inquiries:</strong>
+                                <span class="text-industrial-muted">+91 94869 14343 / +91 96006 69866</span>[cite: 8]
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 rounded bg-industrial-card flex items-center justify-center text-industrial-accent flex-shrink-0">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div>
-                                <div class="font-bold text-white">Email Address</div>
-                                <div class="text-slate-400 mt-1">
-                                    team.powerlead@gmail.com
-                                </div>
+                                <strong class="block text-white">Direct Email:</strong>
+                                <span class="text-industrial-muted">team.powerlead@gmail.com</span>[cite: 8]
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Direct Interactive RFQ Form -->
-                <div class="lg:col-span-7 bg-slate-800 rounded-2xl p-6 sm:p-8 border border-slate-700 shadow-2xl">
-                    <h3 class="font-display text-2xl font-bold mb-6 text-amber-400">Request Technical Proposal / GTP</h3>
-                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-300 mb-1">Company / Organization</label>
-                                <input type="text" required placeholder="e.g. Green Energy Pvt Ltd" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-300 mb-1">Contact Person Name</label>
-                                <input type="text" required placeholder="Full Name" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                            </div>
-                        </div>
-
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
-                                <input type="email" required placeholder="name@company.com" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-300 mb-1">Phone Number</label>
-                                <input type="tel" required placeholder="+91 XXXXX XXXXX" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                            </div>
-                        </div>
-
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-300 mb-1">Required Capacity (MVA)</label>
-                                <select class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                                    <option>1.0 MVA - 3.15 MVA</option>
-                                    <option>5.0 MVA - 8.0 MVA</option>
-                                    <option>10 MVA - 12.5 MVA</option>
-                                    <option>16.0 MVA</option>
-                                    <option>Custom Rating</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-300 mb-1">Application Duty</label>
-                                <select class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                                    <option>Solar Inverter / Evacuation</option>
-                                    <option>Wind Collector Substation</option>
-                                    <option>Industrial Rectifier</option>
-                                    <option>Distribution / Utility Grid</option>
-                                </select>
-                            </div>
-                        </div>
-
+                <div class="lg:col-span-6 bg-industrial-card p-8 rounded-2xl border border-industrial-border shadow-2xl">
+                    <form onsubmit="handleInquirySubmit(event)" class="space-y-4">
+                        <h4 class="text-lg font-bold text-white mb-2">Quick RFQ Message</h4>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">Project Specification & Notes</label>
-                            <textarea rows="4" placeholder="Mention site ambient temp, voltage ratio, OLTC requirement, or standard preferences..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500"></textarea>
+                            <label class="block text-xs uppercase tracking-wider text-industrial-muted mb-1">Your Name / Organization</label>
+                            <input type="text" required class="w-full bg-industrial-dark border border-industrial-border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-industrial-accent" placeholder="e.g. Acme Power Utilities">
                         </div>
-
-                        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-navy-950 font-bold py-4 rounded-xl transition-all shadow-lg shadow-amber-500/20 text-base">
-                            Submit Requirement
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-industrial-muted mb-1">Email Address</label>
+                            <input type="email" required class="w-full bg-industrial-dark border border-industrial-border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-industrial-accent" placeholder="engineer@utility.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-industrial-muted mb-1">Transformer Rating & Specification Notes</label>
+                            <textarea rows="4" required class="w-full bg-industrial-dark border border-industrial-border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-industrial-accent" placeholder="Specify MVA, HV/LV voltage, and application..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-industrial-accent text-industrial-dark font-bold text-xs uppercase tracking-wider rounded-lg hover:bg-industrial-accentHover transition shadow-lg shadow-amber-500/20">
+                            Submit Inquiry Specification
                         </button>
                     </form>
                 </div>
+            </div>
 
+            <div class="mt-20 pt-8 border-t border-industrial-border/40 text-center text-xs text-industrial-muted">
+                &copy; 2026 Power Lead Enterprises Pvt. Ltd. All rights reserved. BIS Licence No. CM/L-6700128010. Specifications are indicative and subject to design and tender requirements[cite: 5, 8].
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-navy-950 text-slate-400 py-12 border-t border-slate-800 text-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919486914343?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20Power%20Lead%20Transformers." target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-500 transition-transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Modals -->
+    <!-- RFQ Configurator Modal -->
+    <div id="rfq-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-industrial-navy border border-industrial-border rounded-2xl max-w-lg w-full p-6 sm:p-8 space-y-6 relative shadow-2xl">
+            <button onclick="closeRfqModal()" class="absolute top-4 right-4 text-industrial-muted hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
             <div>
-                <div class="font-display font-bold text-white text-lg">POWER LEAD ENTERPRISES PVT. LTD.</div>
-                <div class="mt-1 text-slate-500">Power & Distribution Transformers up to 16 MVA 33 kV Class. Specifications subject to tender clauses.</div>
+                <span class="text-xs uppercase tracking-widest text-industrial-accent font-bold">Interactive Configurator</span>
+                <h3 class="text-2xl font-black text-white mt-1">Request Quotation (RFQ)</h3>
             </div>
-            <div class="text-right">
-                <div>© 2026 Power Lead Enterprises. All rights reserved.</div>
-                <div class="mt-1 text-amber-500/80">IS 2026 | IS 1180 | IEC 60076 Certified Practice</div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- UPGRADED STEP-BY-STEP TECHNICAL CONFIGURATOR MODAL -->
-    <div id="quoteModal" class="fixed inset-0 bg-navy-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-xl w-full p-6 sm:p-8 relative text-white shadow-2xl">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            
-            <!-- Modal Header with Progress Indicator -->
-            <div class="mb-6">
-                <div class="flex justify-between items-center mb-2">
-                    <h3 class="font-display text-2xl font-bold text-amber-400">Technical RFQ Configurator</h3>
-                    <span id="stepIndicator" class="text-xs font-mono bg-slate-800 text-amber-400 px-2.5 py-1 rounded">Step 1 of 3</span>
+            <form onsubmit="handleModalRfq(event)" class="space-y-4 text-sm">
+                <div>
+                    <label class="block text-xs text-industrial-muted mb-1">Select Rating (MVA)</label>
+                    <select class="w-full bg-industrial-dark border border-industrial-border rounded-lg p-3 text-white">
+                        <option>1 MVA - 3.15 MVA (33 kV Class)</option>[cite: 5]
+                        <option>5 MVA - 8 MVA (33 kV Class)</option>[cite: 5]
+                        <option>10 MVA - 12.5 MVA (33 kV Class)</option>[cite: 5]
+                        <option>16 MVA - 20 MVA Max Rating (33 kV Class)</option>[cite: 5]
+                    </select>
                 </div>
-                <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                    <div id="progressBar" class="bg-amber-500 h-full w-1/3 transition-all duration-300"></div>
+                <div>
+                    <label class="block text-xs text-industrial-muted mb-1">Insulating Fluid</label>
+                    <select class="w-full bg-industrial-dark border border-industrial-border rounded-lg p-3 text-white">
+                        <option>Standard Mineral Oil</option>[cite: 5, 7]
+                        <option>Biodegradable Natural Ester Fluid</option>[cite: 5, 7]
+                    </select>
                 </div>
-            </div>
-
-            <form id="configuratorForm" onsubmit="handleConfiguratorSubmit(event)" class="space-y-5">
-                
-                <!-- STEP 1: Capacity & Voltage Class -->
-                <div id="configStep1" class="space-y-4">
-                    <p class="text-xs text-amber-400 font-semibold uppercase tracking-wider">Step 1: Rating & Electrical Parameters</p>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Target Power Rating (MVA)</label>
-                        <select id="cfgRating" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                            <option value="1 - 3.15 MVA">1.0 MVA to 3.15 MVA</option>
-                            <option value="5 - 8 MVA">5.0 MVA to 8.0 MVA</option>
-                            <option value="10 - 12.5 MVA">10.0 MVA to 12.5 MVA</option>
-                            <option value="16 MVA">16.0 MVA (Maximum Rating)</option>
-                            <option value="Custom Rating">Custom Project Rating</option>
-                        </select>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">HV Voltage Class</label>
-                            <select id="cfgHv" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                                <option value="36 kV / 33 kV">33 kV Class (Um 36 kV)</option>
-                                <option value="11 kV">11 kV Class</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">LV Output Voltage</label>
-                            <select id="cfgLv" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                                <option value="11 kV">11 kV</option>
-                                <option value="6.6 kV">6.6 kV</option>
-                                <option value="3.3 kV">3.3 kV</option>
-                                <option value="0.433 kV (433V)">0.433 kV (433V)</option>
-                                <option value="0.69 kV (Solar Split)">0.69 kV (Solar Inverter Split)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <button type="button" onclick="nextConfigStep(2)" class="w-full bg-amber-500 hover:bg-amber-600 text-navy-950 font-bold py-3.5 rounded-xl text-sm transition-all flex items-center justify-center gap-2">
-                        Next: Cooling & Fluid <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                <div>
+                    <label class="block text-xs text-industrial-muted mb-1">Contact Email / Phone</label>
+                    <input type="text" required placeholder="Enter email or phone number" class="w-full bg-industrial-dark border border-industrial-border rounded-lg p-3 text-white">
                 </div>
-
-                <!-- STEP 2: Cooling, Fluid & Tapping -->
-                <div id="configStep2" class="space-y-4 hidden">
-                    <p class="text-xs text-amber-400 font-semibold uppercase tracking-wider">Step 2: Thermal & Insulation Mechanics</p>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Insulating Liquid Medium</label>
-                        <select id="cfgFluid" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                            <option value="Mineral Oil (Standard)">Mineral Oil (Standard High-BDV)</option>
-                            <option value="Natural Ester Fluid (Biodegradable)">Natural Ester Bio-Fluid (High Fire Point)</option>
-                        </select>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">Cooling Type</label>
-                            <select id="cfgCooling" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                                <option value="ONAN">ONAN (Oil Natural Air Natural)</option>
-                                <option value="ONAN / ONAF">ONAN / ONAF (Forced Air Auxiliary)</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">Tap Changing System</label>
-                            <select id="cfgTap" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                                <option value="OLTC (+/- 10%, 16 steps)">OLTC (On-Load, ±10%, 16 steps)</option>
-                                <option value="OCTC (+/- 5%)">OCTC (Off-Circuit Switch, ±5%)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-3">
-                        <button type="button" onclick="nextConfigStep(1)" class="w-1/3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-3.5 rounded-xl text-sm transition-all">
-                            Back
-                        </button>
-                        <button type="button" onclick="nextConfigStep(3)" class="w-2/3 bg-amber-500 hover:bg-amber-600 text-navy-950 font-bold py-3.5 rounded-xl text-sm transition-all flex items-center justify-center gap-2">
-                            Next: Contact Info <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- STEP 3: Project Location & Contact -->
-                <div id="configStep3" class="space-y-4 hidden">
-                    <p class="text-xs text-amber-400 font-semibold uppercase tracking-wider">Step 3: Site Details & Contact Information</p>
-                    
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">Company / Organization</label>
-                            <input type="text" required id="cfgCompany" placeholder="e.g. Utility Corp" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">Contact Name</label>
-                            <input type="text" required id="cfgName" placeholder="Engineer Name" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">Work Email</label>
-                            <input type="email" required id="cfgEmail" placeholder="name@company.com" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">Phone / WhatsApp</label>
-                            <input type="tel" required id="cfgPhone" placeholder="+91 XXXXX XXXXX" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Max Site Ambient Temp (°C) / Notes</label>
-                        <input type="text" id="cfgNotes" placeholder="e.g., 50°C Ambient, Altitude > 1000m, Solar Grid" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
-                    </div>
-
-                    <div class="flex gap-3">
-                        <button type="button" onclick="nextConfigStep(2)" class="w-1/3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-3.5 rounded-xl text-sm transition-all">
-                            Back
-                        </button>
-                        <button type="submit" class="w-2/3 bg-amber-500 hover:bg-amber-600 text-navy-950 font-bold py-3.5 rounded-xl text-sm transition-all shadow-lg shadow-amber-500/20">
-                            Submit Full Specification RFQ
-                        </button>
-                    </div>
-                </div>
+                <button type="submit" class="w-full py-3 bg-industrial-accent text-industrial-dark font-bold uppercase rounded-lg hover:bg-industrial-accentHover transition">
+                    Send RFQ Spec
+                </button>
             </form>
         </div>
     </div>
 
-    <!-- DIGITAL QR CERTIFICATE DEMO MODAL -->
-    <div id="qrModal" class="fixed inset-0 bg-navy-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full p-6 relative text-white shadow-2xl">
-            <button onclick="closeQrModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            
-            <div class="text-center space-y-4">
-                <div class="w-16 h-16 bg-amber-500/10 text-amber-400 rounded-2xl mx-auto flex items-center justify-center text-3xl">
-                    <i class="fa-solid fa-qrcode"></i>
-                </div>
-                <h3 class="font-display text-2xl font-bold text-white">QR Digital Certificate Demo</h3>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                    Every Power Lead transformer carries a serialized QR code on the rating plate. Scanning it unlocks the unit's documented life-story:
-                </p>
-
-                <div class="bg-slate-950 p-4 rounded-xl text-left border border-slate-800 space-y-2 text-xs font-mono">
-                    <div class="flex justify-between border-b border-slate-800 pb-1">
-                        <span class="text-slate-500">Serial No:</span>
-                        <span class="text-amber-400">PLE-2026-33K-16M-042</span>
-                    </div>
-                    <div class="flex justify-between border-b border-slate-800 pb-1">
-                        <span class="text-slate-500">CRGO Heat No:</span>
-                        <span class="text-slate-300">TH-88392-A</span>
-                    </div>
-                    <div class="flex justify-between border-b border-slate-800 pb-1">
-                        <span class="text-slate-500">Oil Breakdown Volts:</span>
-                        <span class="text-emerald-400">72 kV (Passed)</span>
-                    </div>
-                    <div class="flex justify-between border-b border-slate-800 pb-1">
-                        <span class="text-slate-500">Impulse Test:</span>
-                        <span class="text-emerald-400">170 kV BIL Verified</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-slate-500">Routine Test Report:</span>
-                        <span class="text-amber-400 underline cursor-pointer">View PDF Report</span>
-                    </div>
-                </div>
-
-                <button onclick="closeQrModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl text-sm">
-                    Close Preview
-                </button>
+    <!-- Catalogue Download Modal -->
+    <div id="catalog-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-industrial-navy border border-industrial-border rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-6 relative shadow-2xl text-center">
+            <button onclick="closeCatalogModal()" class="absolute top-4 right-4 text-industrial-muted hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <div class="w-16 h-16 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto text-industrial-accent text-2xl">
+                <i class="fa-solid fa-file-pdf"></i>
             </div>
+            <h3 class="text-2xl font-black text-white">Official Power Lead Catalogue</h3>
+            <p class="text-industrial-muted text-sm">Download the complete technical catalogue (Up to 20 MVA, 33 kV Class)[cite: 5] in PDF format.</p>
+            <button onclick="simulateDownload()" class="w-full py-3 bg-industrial-accent text-industrial-dark font-bold uppercase rounded-lg hover:bg-industrial-accentHover transition">
+                Download PDF Catalogue
+            </button>
         </div>
     </div>
 
-    <!-- FLOATING WHATSAPP CHAT BUTTON WIDGET -->
-    <a href="https://wa.me/919486914343?text=Hello%20Power%20Lead%20Team%2C%20I%20would%20like%20to%20inquire%20about%20a%20transformer%20quote." 
-       target="_blank" 
-       rel="noopener noreferrer"
-       class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl shadow-emerald-500/40 hover:scale-110 transition-all duration-300 group">
-        <i class="fa-brands fa-whatsapp"></i>
-        <span class="absolute right-16 bg-slate-900 text-white text-xs font-semibold py-1.5 px-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg border border-slate-700">
-            Chat on WhatsApp (+91 94869 14343)
-        </span>
-    </a>
+    <!-- QR Certificate Modal -->
+    <div id="cert-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-industrial-navy border border-industrial-border rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-6 relative shadow-2xl text-center">
+            <button onclick="closeCertModal()" class="absolute top-4 right-4 text-industrial-muted hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <div class="w-16 h-16 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto text-industrial-accent text-2xl">
+                <i class="fa-solid fa-qrcode"></i>
+            </div>
+            <h3 class="text-2xl font-black text-white">QR-Coded Digital Certificate</h3>
+            <p class="text-industrial-muted text-sm">Every transformer carries a QR link providing lifetime traceability: CRGO heat numbers, routine/type test reports, and approved spare lists[cite: 7].</p>
+            <div class="bg-industrial-dark p-4 rounded-lg border border-industrial-border text-xs text-left space-y-2 font-mono text-slate-300">
+                <div>[BIS LICENCE]: CM/L-6700128010</div>[cite: 5]
+                <div>[SERIAL]: PLE-2026-20MVA-33KV</div>[cite: 5]
+                <div>[CRGO HEAT]: #HT-88492-HI</div>
+                <div>[BDV TEST]: PASSED (70 kV)</div>[cite: 5]
+            </div>
+            <button onclick="closeCertModal()" class="w-full py-3 bg-industrial-card border border-industrial-border text-white font-bold uppercase rounded-lg hover:bg-industrial-border transition">
+                Close Preview
+            </button>
+        </div>
+    </div>
 
-    <!-- JAVASCRIPT INTERACTIVE LOGIC -->
-    <script>
-        // 1. DATA FOR PRODUCTS BY APPLICATION TABS
-        const productData = {
-            solar: {
-                title: "Solar Inverter & Pooling Transformers",
-                typical: "TYPICAL: 2 - 16 MVA, 33 kV HV, Split LV (4x0.69 kV or 11 kV), ONAN",
-                features: [
-                    "Dual-LV split windings designed for inverter block coupling",
-                    "Harmonic and DC-bias tolerant core design",
-                    "High thermal margin for continuous summer daylight cycling",
-                    "5-winding configurations available upon tender requirement"
-                ],
-                icon: "fa-sun text-amber-400"
-            },
-            wind: {
-                title: "Wind Turbine & Collector Substation Units",
-                typical: "TYPICAL: 1.6 - 16 MVA, HV 33 kV or 11 kV, LV 0.69 - 11 kV, ONAN / ONAF",
-                features: [
-                    "Compact footprint designed for nacelle / tower base alignment",
-                    "High-vibration mechanical clamping structures",
-                    "Environmentally safe biodegradable ester oil options",
-                    "Resilient against frequent grid switching & energization cycles"
-                ],
-                icon: "fa-wind text-cyan-400"
-            },
-            rectifier: {
-                title: "Industrial & Traction Rectifier Transformers",
-                typical: "TYPICAL: Up to 16 MVA, 33 kV, 6/12/24-Pulse Systems",
-                features: [
-                    "Phase-shifting secondary/tertiary windings",
-                    "Integrated interphase reactors for heavy DC load drives",
-                    "High short-circuit and harmonic current withstand capability",
-                    "Built in compliance with IEC 61378 standards"
-                ],
-                icon: "fa-plug-circle-bolt text-yellow-400"
-            },
-            special: {
-                title: "Furnace, Earthing & Custom Application Units",
-                typical: "TYPICAL: Up to 16 MVA, 33 kV Class, Tailored Parameters",
-                features: [
-                    "Custom impedance matching for arc/induction furnace duty",
-                    "Auxiliary station transformer integration",
-                    "Specialized tapping ranges (OLTC / OCTC) and vector configurations",
-                    "Ruggedized enclosure options for polluted or high-altitude sites"
-                ],
-                icon: "fa-gears text-emerald-400"
-            }
-        };
-
-        // 2. DATA FOR TECHNICAL MATRIX TABLE WITH VECTOR TOOLTIPS
-        const tableData = [
-            { 
-                mva: "1 - 3.15", 
-                hv: "33 kV", 
-                lv: "11 / 6.6 / 0.433 kV", 
-                cooling: "ONAN", 
-                tapping: "OCTC ±5% or OLTC", 
-                vector: "Dyn11 / YNd11", 
-                vectorTooltip: "Dyn11: Delta HV, Star LV with Neutral, 30° phase shift. YNd11: Star HV, Delta LV.",
-                category: "1-3.15" 
-            },
-            { 
-                mva: "5 - 8", 
-                hv: "33 kV", 
-                lv: "11 / 6.6 / 3.3 kV", 
-                cooling: "ONAN", 
-                tapping: "OLTC ±10%, 16 steps", 
-                vector: "Dyn11 / YNd11", 
-                vectorTooltip: "Dyn11: Standard step-down utility vector. YNd11: Generator step-up / grid coupling.",
-                category: "5-8" 
-            },
-            { 
-                mva: "10 - 12.5", 
-                hv: "33 kV", 
-                lv: "11 / 6.6 / 3.3 kV", 
-                cooling: "ONAN / ONAF", 
-                tapping: "OLTC ±10%, 16 steps", 
-                vector: "Dyn11 / YNd11 / YNyn0", 
-                vectorTooltip: "YNyn0: Star HV & LV with neutral grounding for direct system grounding tie-ins.",
-                category: "10-12.5" 
-            },
-            { 
-                mva: "16", 
-                hv: "33 kV", 
-                lv: "11 kV", 
-                cooling: "ONAN / ONAF", 
-                tapping: "OLTC ±10%, 16 steps", 
-                vector: "Dyn11 / YNd11", 
-                vectorTooltip: "Dyn11 / YNd11: High MVA substation evacuation setup.",
-                category: "16" 
-            }
-        ];
-
-        // 3. DATA FOR 10-STAGE PROCESS
-        const stagesData = [
-            { num: "01", title: "Enquiry & Specification Review", desc: "Load profile, ambient temp, harmonics, site altitude, grid fault level, GTP clauses reviewed." },
-            { num: "02", title: "Electromagnetic Design", desc: "Core area, flux density, turns, and winding losses optimized for evaluated capitalized cost." },
-            { num: "03", title: "Mechanical & Thermal Design", desc: "Short-circuit force calculations, tank vacuum withstand capability, radiator sizing." },
-            { num: "04", title: "Materials & Vendor Control", desc: "CRGO, copper, paper, and OLTC sourced exclusively from approved vendors with heat numbers." },
-            { num: "05", title: "Core Building", desc: "Step-lap mitred Hi-B / laser-scribed CRGO core assembly for minimized no-load losses." },
-            { num: "06", title: "Winding & Insulation Assembly", desc: "Controlled tension winding in a clean, humidity-controlled bay; core-coil assembly." },
-            { num: "07", title: "Drying, Tanking & Vacuum Oil Filling", desc: "Vapour-phase/vacuum oven drying to target low moisture; hot oil circulation." },
-            { num: "08", title: "Routine, Type & Special Testing", desc: "In-house routine tests (Ratio, Resistance, DGA); lightning impulse and type tests at NABL labs." },
-            { num: "09", title: "Painting, Packing & Dispatch", desc: "Epoxy-PU coating, nitrogen/oil-filled transit, impact recorders, and route survey." },
-            { num: "10", title: "Erection & Life-Cycle Support", desc: "Supervised commissioning, warranty support, health checks, and 24x7 service line." }
-        ];
-
-        // RENDER PRODUCTS TAB CONTENT
-        function switchTab(key) {
-            const data = productData[key];
-            const container = document.getElementById('productContent');
-            
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('bg-amber-500', 'text-navy-950', 'font-bold');
-                btn.classList.add('bg-slate-800', 'text-slate-300');
-            });
-            const activeBtn = document.getElementById(`tab-${key}`);
-            activeBtn.classList.remove('bg-slate-800', 'text-slate-300');
-            activeBtn.classList.add('bg-amber-500', 'text-navy-950', 'font-bold');
-
-            container.innerHTML = `
-                <div class="grid md:grid-cols-12 gap-8 items-center">
-                    <div class="md:col-span-8 space-y-4">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid ${data.icon} text-2xl"></i>
-                            <h3 class="font-display text-2xl font-bold text-white">${data.title}</h3>
-                        </div>
-                        <div class="inline-block bg-slate-900 border border-slate-700 text-amber-400 font-mono text-xs px-3 py-1.5 rounded-lg">
-                            ${data.typical}
-                        </div>
-                        <ul class="space-y-2.5 pt-2">
-                            ${data.features.map(f => `
-                                <li class="flex items-start gap-3 text-sm text-slate-300">
-                                    <i class="fa-solid fa-circle-check text-amber-500 mt-1"></i>
-                                    <span>${f}</span>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                    <div class="md:col-span-4 bg-slate-900 p-6 rounded-xl border border-slate-700 text-center">
-                        <i class="fa-solid fa-microchip text-5xl text-amber-500/40 mb-3"></i>
-                        <h4 class="font-bold text-white text-sm mb-1">Custom Tender GTP</h4>
-                        <p class="text-xs text-slate-400 mb-4">Request detailed thermal and impedance calculation sheet for this family.</p>
-                        <button onclick="openModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-600 font-semibold py-2.5 rounded-lg text-xs transition-colors">
-                            Configure GTP Parameters
-                        </button>
-                    </div>
-                </div>
-            `;
-        }
-
-        // RENDER TECHNICAL SPECIFICATIONS TABLE WITH TOOLTIPS
-        function renderTable(filter = 'all') {
-            const tbody = document.getElementById('specTableBody');
-            const filteredData = filter === 'all' ? tableData : tableData.filter(d => d.category === filter);
-
-            tbody.innerHTML = filteredData.map(row => `
-                <tr class="hover:bg-slate-50 transition-colors">
-                    <td class="py-4 px-6 font-bold text-navy-900">${row.mva}</td>
-                    <td class="py-4 px-6 text-slate-700">${row.hv}</td>
-                    <td class="py-4 px-6 text-slate-700">${row.lv}</td>
-                    <td class="py-4 px-6"><span class="bg-slate-100 border border-slate-300 text-slate-800 px-2 py-1 rounded text-xs font-mono">${row.cooling}</span></td>
-                    <td class="py-4 px-6 text-slate-700">${row.tapping}</td>
-                    <td class="py-4 px-6 font-mono text-xs text-slate-800">
-                        <div class="relative group inline-block cursor-help border-b border-dashed border-amber-600">
-                            <span class="font-bold text-amber-700">${row.vector}</span>
-                            <i class="fa-solid fa-circle-info text-[10px] text-slate-400 ml-1"></i>
-                            <div class="absolute bottom-full left-0 mb-2 w-64 p-3 bg-navy-950 text-slate-200 text-xs font-sans rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-30 border border-slate-700">
-                                <div class="font-bold text-amber-400 mb-1">Vector Group Info</div>
-                                ${row.vectorTooltip}
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            `).join('');
-        }
-
-        function filterTable(cat) {
-            renderTable(cat);
-        }
-
-        // RENDER ACCORDION STAGES
-        function renderAccordion() {
-            const container = document.getElementById('accordionContainer');
-            container.innerHTML = stagesData.map((stage, idx) => `
-                <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
-                    <button onclick="toggleAccordion(${idx})" class="w-full p-5 text-left flex justify-between items-center hover:bg-slate-800/50 transition-colors">
-                        <div class="flex items-center gap-4">
-                            <span class="font-display font-bold text-amber-400 text-lg">${stage.num}</span>
-                            <span class="font-bold text-white text-base">${stage.title}</span>
-                        </div>
-                        <i id="acc-icon-${idx}" class="fa-solid fa-chevron-down text-slate-400 text-sm transition-transform"></i>
-                    </button>
-                    <div id="acc-body-${idx}" class="hidden p-5 pt-0 text-sm text-slate-400 border-t border-slate-800/50 mt-2">
-                        ${stage.desc}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function toggleAccordion(idx) {
-            const body = document.getElementById(`acc-body-${idx}`);
-            const icon = document.getElementById(`acc-icon-${idx}`);
-            if (body.classList.contains('hidden')) {
-                body.classList.remove('hidden');
-                icon.classList.add('rotate-180');
-            } else {
-                body.classList.add('hidden');
-                icon.classList.remove('rotate-180');
-            }
-        }
-
-        // MOBILE MENU TOGGLE
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        // STEP-BY-STEP CONFIGURATOR MODAL CONTROLS
-        function openModal() {
-            document.getElementById('quoteModal').classList.remove('hidden');
-            nextConfigStep(1);
-        }
-        function closeModal() {
-            document.getElementById('quoteModal').classList.add('hidden');
-        }
-
-        function nextConfigStep(step) {
-            document.getElementById('configStep1').classList.add('hidden');
-            document.getElementById('configStep2').classList.add('hidden');
-            document.getElementById('configStep3').classList.add('hidden');
-
-            document.getElementById(`configStep${step}`).classList.remove('hidden');
-
-            const stepIndicator = document.getElementById('stepIndicator');
-            const progressBar = document.getElementById('progressBar');
-
-            stepIndicator.textContent = `Step ${step} of 3`;
-            progressBar.style.width = step === 1 ? '33%' : step === 2 ? '66%' : '100%';
-        }
-
-        // DIGITAL QR MODAL
-        function openQrModal() {
-            document.getElementById('qrModal').classList.remove('hidden');
-        }
-        function closeQrModal() {
-            document.getElementById('qrModal').classList.add('hidden');
-        }
-
-        // SIMULATE CATALOG DOWNLOAD
-        function downloadCatalog() {
-            alert('Power Lead Enterprises Catalogue PDF download starting...\n(Reference Catalogue: Up to 16 MVA 33 kV Class)');
-        }
-
-        // FORM SUBMISSION HANDLERS
-        function handleConfiguratorSubmit(e) {
-            e.preventDefault();
-            const rating = document.getElementById('cfgRating').value;
-            const fluid = document.getElementById('cfgFluid').value;
-            const company = document.getElementById('cfgCompany').value;
-            
-            alert(`Configured RFQ Received!\n\nTarget Rating: ${rating}\nFluid Medium: ${fluid}\nCompany: ${company}\n\nOur engineering team will prepare your custom GTP proposal within 24 hours.`);
-            closeModal();
-            e.target.reset();
-        }
-
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            alert('Thank you for your enquiry. The Power Lead design team will review your specifications and contact you shortly.');
-            e.target.reset();
-        }
-
-        // INITIALIZE ON LOAD
-        window.onload = function() {
-            switchTab('solar');
-            renderTable('all');
-            renderAccordion();
-            document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
-        };
-    </script>
+    <!-- Script File -->
+    <script src="script.js"></script>
 </body>
 </html>

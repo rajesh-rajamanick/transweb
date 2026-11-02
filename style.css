@@ -1,0 +1,40 @@
+/* Custom Industrial Theme Enhancements */
+body {
+    background-color: #070f1e;
+    color: #f1f5f9;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Smooth transitions for tabs and interactive elements */
+.app-tab-pane {
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom scrollbar matching industrial palette */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #070f1e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1e3a8a;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #f59e0b;
+}
