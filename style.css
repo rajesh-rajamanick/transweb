@@ -1,40 +1,25 @@
-/* Custom Industrial Theme Enhancements */
+/* Shared BMW Grey & White Industrial Theme Styles */
 body {
-    background-color: #070f1e;
-    color: #f1f5f9;
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #FFFFFF;
+    color: #1C1E21;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Smooth transitions for tabs and interactive elements */
-.app-tab-pane {
-    animation: fadeIn 0.3s ease-in-out forwards;
+html {
+    scroll-behavior: smooth;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(6px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Custom scrollbar matching industrial palette */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
-
 ::-webkit-scrollbar-track {
-    background: #070f1e;
+    background: #F4F5F7;
 }
-
 ::-webkit-scrollbar-thumb {
-    background: #1e3a8a;
+    background: #8E939D;
     border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-    background: #f59e0b;
+    background: #0066B3;
 }

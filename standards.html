@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Lead Enterprises | BIS & Quality Standards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bmwGray: '#8E939D',
+                        lightCement: '#F4F5F7',
+                        darkCharcoal: '#1C1E21',
+                        accentBlue: '#0066B3'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-white text-darkCharcoal font-sans antialiased selection:bg-accentBlue selection:text-white">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-bmwGray/30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-darkCharcoal flex items-center justify-center shadow-md">
+                    <i class="fa-solid fa-bolt text-white text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-black tracking-wider uppercase text-darkCharcoal">POWER LEAD</span>
+                    <span class="block text-[10px] tracking-widest text-accentBlue font-bold">ENTERPRISES</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold">
+                <a href="index.html" class="hover:text-accentBlue transition-colors">Home</a>
+                <a href="products.html" class="hover:text-accentBlue transition-colors">Products</a>
+                <a href="specs.html" class="hover:text-accentBlue transition-colors">Specifications</a>
+                <a href="works.html" class="hover:text-accentBlue transition-colors">Manufacturing Works</a>
+                <a href="standards.html" class="text-accentBlue transition-colors">BIS Standards</a>
+            </nav>
+            <button id="mobile-menu-btn" class="md:hidden text-darkCharcoal focus:outline-none"><i class="fa-solid fa-bars text-2xl"></i></button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-lightCement border-b border-bmwGray px-4 pt-2 pb-6 space-y-4">
+            <a href="index.html" class="block py-2 text-darkCharcoal font-semibold">Home</a>
+            <a href="products.html" class="block py-2 text-darkCharcoal font-semibold">Products</a>
+            <a href="specs.html" class="block py-2 text-darkCharcoal font-semibold">Specifications</a>
+            <a href="works.html" class="block py-2 text-darkCharcoal font-semibold">Manufacturing Works</a>
+            <a href="standards.html" class="block py-2 text-accentBlue font-semibold">BIS Standards</a>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+            <h2 class="text-xs uppercase tracking-widest text-accentBlue font-bold">Certified Quality Assurance</h2>
+            <h3 class="text-3xl font-black text-darkCharcoal">BIS Licence & Traceability Standards</h3>
+            <p class="text-sm text-bmwGray">Fully certified under Bureau of Indian Standards (BIS) specifications[cite: 5].</p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-lightCement border border-bmwGray/30 space-y-6 max-w-4xl mx-auto shadow-sm">
+            <div class="flex items-center space-x-4">
+                <div class="w-16 h-16 bg-accentBlue text-white rounded-xl flex items-center justify-center text-2xl font-bold shadow-md">
+                    <i class="fa-solid fa-certificate"></i>
+                </div>
+                <div>
+                    <h4 class="text-xl font-black text-darkCharcoal">BIS Licence No. CM/L-6700128010</h4>
+                    <p class="text-sm text-darkCharcoal/80">Licence No. 6700128010 as per IS 1180: Part 1: 2014 for distribution transformers up to 2500 kVA and power transformers up to 20 MVA[cite: 5].</p>
+                </div>
+            </div>
+            <div class="border-t border-bmwGray/30 pt-6 grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-2">
+                    <strong class="block text-darkCharcoal text-base"><i class="fa-solid fa-qrcode text-accentBlue mr-2"></i> QR-Coded Digital Certificate</strong>
+                    <p class="text-darkCharcoal/80 leading-relaxed">Every unit carries a QR link to its drawing files, material heat numbers, test reports, and spares list from day one[cite: 7].</p>
+                </div>
+                <div class="space-y-2">
+                    <strong class="block text-darkCharcoal text-base"><i class="fa-solid fa-flask text-accentBlue mr-2"></i> NABL Accredited Test Bay</strong>
+                    <p class="text-darkCharcoal/80 leading-relaxed">Rigorous routine, type, and special testing conducted with calibrated instruments and NABL lab validation[cite: 8].</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-darkCharcoal text-white text-center border-t border-bmwGray/30 mt-12">
+        <div class="max-w-4xl mx-auto px-4 space-y-3">
+            <h3 class="text-xl font-bold">Power Lead Enterprises Pvt. Ltd.</h3>
+            <p class="text-xs text-bmwGray">Regd. Office: Vaniyambadi Taluk | Factory: Ambur Taluk, Tirupattur District, Tamil Nadu, India[cite: 8]</p>
+            <p class="text-xs text-bmwGray">&copy; 2026 All rights reserved. BIS Licence No. CM/L-6700128010[cite: 5, 8].</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
